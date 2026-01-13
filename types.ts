@@ -5,55 +5,49 @@ export enum PageType {
   Unknown = "unknown"
 }
 
-export interface Specification {
+export interface ProductPrice {
+  amount: number | null;
+  currency: string | null;
+  unitType: string | null;
+  pricePerUnit: number | null;
+  totalRatings: number | null;
+  averageRating: number | null;
+  unitsPerContainer: number | null;
+}
+
+export interface ProductIngredient {
   name: string;
-  value: string;
+  unit: string;
+  amount: number;
 }
 
-export interface NutritionalComponent {
-  element: string;
-  amount: string;
-  dailyValue?: string;
+export interface ProductRecommendation {
+  reason: string;
+  priority: number;
 }
 
-export interface ProductDetails {
-  price: {
-    amount: string | null;
-    currency: string | null;
-  } | null;
-  specifications: Specification[]; // e.g. Serving Size, Servings Per Container
-  nutritionalInformation: NutritionalComponent[]; // e.g. Vitamin C, 500mg, 833%
-  description: string | null;
-  suggestedUse: string | null;
-  ingredients: string | null; // Other ingredients list
-  warnings: string | null;
-  disclaimer: string | null;
-  labelImage: string | null; // URL of the supplement facts label
+export interface NutritionalFact {
+  name: string;
+  unit: string;
+  amount: number;
 }
 
-export interface ContentDetails {
-  author: string | null;
-  publishDate: string | null;
-  mainContent: string | null;
-  headings: string[];
+export interface Product {
+  name: string | null;
+  brand: string | null;
+  price: ProductPrice;
+  imageUrls: string[];
+  productId: string | null;
+  is_trusted: boolean;
+  productUrl: string | null;
+  ingredients: ProductIngredient[];
+  recommendation: ProductRecommendation;
+  nutritionalFacts: NutritionalFact[];
+  productIngredientList: string[];
 }
 
 export interface ScrapedData {
-  pageType: PageType;
-  metadata: {
-    title: string | null;
-    metaDescription: string | null;
-    canonicalUrl: string | null;
-    language: string | null;
-  };
-  coreEntity: {
-    name: string | null;
-    brand: string | null;
-    category: string | null;
-    image: string | null; // Main entity image URL
-  };
-  productDetails?: ProductDetails;
-  contentDetails?: ContentDetails;
+  products: Product[];
 }
 
 export interface AnalysisState {
