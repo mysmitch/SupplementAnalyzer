@@ -29,8 +29,8 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
           const isHighlight = item.toLowerCase().includes('extract') || item.toLowerCase().includes('organic');
           return (
             <span key={idx} className={`px-2 py-1 border rounded text-[11px] font-medium transition-all hover:scale-105 cursor-default ${isHighlight
-                ? 'bg-brand-accent/10 border-brand-accent/30 text-brand-accent'
-                : 'bg-brand-bg/50 border-brand-tertiary text-brand-secondary'
+              ? 'bg-brand-accent/10 border-brand-accent/30 text-brand-accent'
+              : 'bg-brand-bg/50 border-brand-tertiary text-brand-secondary'
               }`}>
               {item}
             </span>
