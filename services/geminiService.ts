@@ -77,7 +77,7 @@ const analysisSchema = {
 };
 
 export const analyzeUrl = async (url: string, imageUrl?: string): Promise<ScrapedData> => {
-  const apiKey = "AIzaSyCzsZoOsm7bze4Fran4iNnmh4Y9pTr3Djc";
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     throw new Error("API Key not found in environment variables.");
   }
